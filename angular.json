@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Boxcommerce": {
+    "boxcommerce": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/Boxcommerce",
+            "outputPath": "dist/boxcommerce",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -29,6 +29,7 @@
               "src/manifest.webmanifest"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -69,18 +70,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Boxcommerce:build"
+            "browserTarget": "boxcommerce:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "Boxcommerce:build:production"
+              "browserTarget": "boxcommerce:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Boxcommerce:build"
+            "browserTarget": "boxcommerce:build"
           }
         },
         "test": {
@@ -96,6 +97,7 @@
               "src/manifest.webmanifest"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -118,15 +120,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "Boxcommerce:serve"
+            "devServerTarget": "boxcommerce:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "Boxcommerce:serve:production"
+              "devServerTarget": "boxcommerce:serve:production"
             }
           }
         }
       }
-    }},
-  "defaultProject": "Boxcommerce"
+    }
+  },
+  "defaultProject": "boxcommerce"
 }
