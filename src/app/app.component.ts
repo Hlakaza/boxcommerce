@@ -7,16 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'Boxcommerce';
-  amount = 150;
-  randTousdRate = 16.23;
-  convertedValue: any = 0;
+  isFav = false;
   constructor() {}
 
   ngOnInit(): void {
-    this.convertedValue = this.calculateExchangeRate(this.randTousdRate, 1);
   }
 
-  calculateExchangeRate(fromRate: number, toRate: number): string {
-    return ((this.amount * toRate) / fromRate).toFixed(5);
-  }
 }

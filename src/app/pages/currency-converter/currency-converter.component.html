@@ -1,0 +1,68 @@
+<ng-container *ngIf="rates?.length">
+  <form class="d-flex flex-col-wrap w-100 align-items-center" [formGroup]="currencyConverterForm">
+    <mat-card class="converter-content custom-box mt-1">
+      <mat-card-title class="mb-3 mt-1 text-center">
+        <img class="option-img" *ngIf="selectedValueTo?.currencyCode" aria-hidden [src]="'assets/countries/svg/'+getImage(selectedValueTo.currencyCode)+'.svg'" height="25">
+       {{result | currency: selectedValueTo?.currencyCode:'symbol-narrow'}}
+      </mat-card-title>
+      <div class="d-flex flex-row-wrap justify-content-between">
+        <div class="flex-item-100">
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Amount</mat-label>
+            <input formControlName="amount" matInput type="number" class="example-right-align">
+          </mat-form-field>
+        </div>
+
+        <div class="flex-item-50">
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>From</mat-label>
+            <mat-select formControlName="rateFrom" [(value)]="selectedValueFrom">
+              <mat-select-trigger>
+                <img class="option-img" *ngIf="selectedValueFrom?.currencyCode" aria-hidden [src]="'assets/countries/svg/'+getImage(selectedValueFrom.currencyCode)+'.svg'" height="25">
+                {{selectedValueFrom?.currencyCode}}
+              </mat-select-trigger>
+              <mat-option *ngFor="let rate of rates" [value]="rate">
+                <img class="option-img"  aria-hidden [src]="'assets/countries/svg/'+getImage(rate.currencyCode)+'.svg'" height="25">
+                {{rate?.currencyCode}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="flex-item-50">
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>To</mat-label>
+            <mat-select formControlName="rateTo" [(value)]="selectedValueTo">
+              <mat-select-trigger>
+                <img class="option-img" *ngIf="selectedValueTo?.currencyCode" aria-hidden [src]="'assets/countries/svg/'+getImage(selectedValueTo.currencyCode)+'.svg'" height="25">
+                {{selectedValueTo?.currencyCode}}
+              </mat-select-trigger>
+              <mat-option *ngFor="let rate of rates" [value]="rate">
+                <img class="option-img"  aria-hidden [src]="'assets/countries/svg/'+getImage(rate.currencyCode)+'.svg'" height="25">
+                {{rate.currencyCode}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="flex-item-100">
+          <button  class="w-100" type="button" (click)="convert()" [disabled]="!currencyConverterForm.valid" mat-raised-button color="primary">Convert</button>
+        </div>
+        <div class="flex-item-100">
+          <div class="text-right"><small>last updated at <b>{{updated | date: 'mediumDate'}}</b></small></div>
+          <mat-card class="mt-1" *ngFor="let rate of getTopCurrencies(rates)">
+            <div class="d-flex">
+              <img class="option-img" *ngIf="rate?.currencyCode" aria-hidden [src]="'assets/countries/svg/'+getImage(rate.currencyCode)+'.svg'" height="25">
+              &nbsp;{{rate?.currencyCode}}
+              <span class="flex-spacer"></span>
+              {{rate?.rate}}
+              <mat-icon [class.text-success]="rate.rate <= this.baseRate" [class.text-danger]="rate.rate > this.baseRate">{{rate.rate <= this.baseRate ? 'trending_up' : 'trending_down'}}</mat-icon>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+    </mat-card>
+  </form>
+</ng-container>
+
+

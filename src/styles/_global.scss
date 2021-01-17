@@ -1,0 +1,83 @@
+@import "./variables";
+.bg-grey {
+  background: $light-grey-color;
+}
+
+.d-flex {
+   display: flex;
+}
+
+.flex-col-wrap {
+  flex-flow: column;
+  flex-wrap: wrap;
+}
+.flex-row-wrap {
+  flex-flow: row;
+  flex-wrap: wrap;
+}
+
+.flex-item-100 {
+   width: 100%;
+}
+
+.flex-item-50 {
+   width: 45%;
+}
+.flex-spacer {
+  flex: 1 1 auto;
+}
+.justify-content-center {
+  justify-content: center;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.w-100 {
+   width: 100%;
+}
+
+.mb-2 {
+  margin-bottom: 1.5rem;
+}
+.mb-1 {
+  margin-bottom: 1.5rem;
+}
+.mt-1 {
+  margin-top: 1rem;
+}
+
+button {
+  &:focus{
+    outline: none;
+    border: 0;
+  }
+}
+
+.text {
+  &-right {
+    text-align: right;
+  }
+  &-left {
+    text-align: left;
+  }
+  &-center {
+    text-align: center;
+  }
+  &-danger {
+    color:$danger-color;
+  }
+  &-success {
+    color: $success-color;
+  }
+}
+.custom-box {
+  border-top: 10px solid $primary-color;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
