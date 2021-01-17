@@ -1,3 +1,4 @@
+import { MatCardModule } from '@angular/material/card';
 import { ApiService } from './services/api.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -33,6 +34,7 @@ const routes: Routes = [
     MatIconModule,
     HttpClientModule,
     MatButtonModule,
+    MatCardModule,
     RouterModule.forRoot(routes)
   ],
   providers: [

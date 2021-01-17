@@ -1,4 +1,4 @@
-import { DefaultCurrecnies } from './top-currencies';
+import { DefaultCurrecnies } from '../../shared/top-currencies';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
@@ -18,14 +18,20 @@ export class CurrencyConverterComponent implements OnInit {
   selectedValueTo: Currency;
   amount = 0;
   result: any = 0;
-  constructor(readonly api: ApiService) { }
-
-  ngOnInit(): void {
+  constructor(readonly api: ApiService) {
     this.api.getRates().subscribe((res: Rates) => {
       this.updated = res.date;
       this.baseRate = res.rates.USD;
       this.generateRatesArray(res.rates);
-      this.initForm();
+    });
+  }
+
+  ngOnInit(): void {
+    this.initForm();
+    this.currencyConverterForm.valueChanges.subscribe(data => {
+       if (this.currencyConverterForm.valid) {
+         this.convert();
+       }
     });
   }
 
@@ -43,7 +49,7 @@ export class CurrencyConverterComponent implements OnInit {
     return countryCode === 'hp' ? 'ph' : countryCode ;
   }
 
-  generateRatesArray(data): any {
+  generateRatesArray(data): void {
      this.rates = [];
      for (const key in data) {
        if (Object.prototype.hasOwnProperty.call(data, key)) {
@@ -52,9 +58,16 @@ export class CurrencyConverterComponent implements OnInit {
      }
   }
 
-  convert(): any {
+  convert(): void {
      this.amount = Number(this.currencyConverterForm.controls.amount.value);
      this.result = this.calculateExchangeRate(this.selectedValueFrom.rate, this.selectedValueTo.rate);
+  }
+
+  swapCurrency(): void {
+     const fromValues = this.selectedValueFrom;
+     const toValues = this.selectedValueTo;
+     this.currencyConverterForm.controls.rateFrom.setValue(toValues);
+     this.currencyConverterForm.controls.rateTo.setValue(fromValues);
   }
 
   getTopCurrencies(data): any {

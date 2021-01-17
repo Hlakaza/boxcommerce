@@ -21,7 +21,7 @@
                 <img class="option-img" *ngIf="selectedValueFrom?.currencyCode" aria-hidden [src]="'assets/countries/svg/'+getImage(selectedValueFrom.currencyCode)+'.svg'" height="25">
                 {{selectedValueFrom?.currencyCode}}
               </mat-select-trigger>
-              <mat-option *ngFor="let rate of rates" [value]="rate">
+              <mat-option *ngFor="let rate of rates | sort:'currencyCode'" [value]="rate">
                 <img class="option-img"  aria-hidden [src]="'assets/countries/svg/'+getImage(rate.currencyCode)+'.svg'" height="25">
                 {{rate?.currencyCode}}
               </mat-option>
@@ -37,7 +37,7 @@
                 <img class="option-img" *ngIf="selectedValueTo?.currencyCode" aria-hidden [src]="'assets/countries/svg/'+getImage(selectedValueTo.currencyCode)+'.svg'" height="25">
                 {{selectedValueTo?.currencyCode}}
               </mat-select-trigger>
-              <mat-option *ngFor="let rate of rates" [value]="rate">
+              <mat-option *ngFor="let rate of rates | sort:'currencyCode'" [value]="rate">
                 <img class="option-img"  aria-hidden [src]="'assets/countries/svg/'+getImage(rate.currencyCode)+'.svg'" height="25">
                 {{rate.currencyCode}}
               </mat-option>
@@ -45,12 +45,13 @@
           </mat-form-field>
         </div>
 
-        <div class="flex-item-100">
+        <!-- <div class="flex-item-100">
           <button  class="w-100" type="button" (click)="convert()" [disabled]="!currencyConverterForm.valid" mat-raised-button color="primary">Convert</button>
-        </div>
-        <div class="flex-item-100">
+        </div> -->
+
+        <div class="flex-item-100 mt-1">
           <div class="text-right"><small>last updated at <b>{{updated | date: 'mediumDate'}}</b></small></div>
-          <mat-card class="mt-1" *ngFor="let rate of getTopCurrencies(rates)">
+          <mat-card class="mt-1" *ngFor="let rate of getTopCurrencies(rates) | sort: 'rate'">
             <div class="d-flex">
               <img class="option-img" *ngIf="rate?.currencyCode" aria-hidden [src]="'assets/countries/svg/'+getImage(rate.currencyCode)+'.svg'" height="25">
               &nbsp;{{rate?.currencyCode}}

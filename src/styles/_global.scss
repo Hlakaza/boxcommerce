@@ -23,6 +23,9 @@
 .flex-item-50 {
    width: 45%;
 }
+.flex-item-20 {
+   width: 18%;
+}
 .flex-spacer {
   flex: 1 1 auto;
 }
@@ -40,6 +43,16 @@
 
 .w-100 {
    width: 100%;
+}
+
+.h-100vh {
+  height: 100vh;
+}
+.h-75vh{
+  height: 75vh;
+}
+.h-100 {
+  height: 100%;
 }
 
 .mb-2 {
@@ -80,4 +93,12 @@ button {
   border-top: 10px solid $primary-color;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+
+@media (max-width: 500px) {
+  .custom-box {
+    border: 0;
+    margin-top: 0;
+  }
 }
