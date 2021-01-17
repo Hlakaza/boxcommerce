@@ -2,8 +2,10 @@
   <form class="d-flex flex-col-wrap w-100 align-items-center" [formGroup]="currencyConverterForm">
     <mat-card class="converter-content custom-box mt-1">
       <mat-card-title class="mb-3 mt-1 text-center">
-        <img class="option-img" *ngIf="selectedValueTo?.currencyCode" aria-hidden [src]="'assets/countries/svg/'+getImage(selectedValueTo.currencyCode)+'.svg'" height="25">
-       {{result | currency: selectedValueTo?.currencyCode:'symbol-narrow'}}
+      <div *ngIf="selectedValueTo?.currencyCode">
+         <img class="flag-img"  aria-hidden [src]="'assets/countries/svg/'+getImage(selectedValueTo.currencyCode)+'.svg'" height="25">
+      </div>
+        {{result | currency: selectedValueTo?.currencyCode:'symbol-narrow'}}
       </mat-card-title>
       <div class="d-flex flex-row-wrap justify-content-between">
         <div class="flex-item-100">
@@ -44,10 +46,6 @@
             </mat-select>
           </mat-form-field>
         </div>
-
-        <!-- <div class="flex-item-100">
-          <button  class="w-100" type="button" (click)="convert()" [disabled]="!currencyConverterForm.valid" mat-raised-button color="primary">Convert</button>
-        </div> -->
 
         <div class="flex-item-100 mt-1">
           <div class="text-right"><small>last updated at <b>{{updated | date: 'mediumDate'}}</b></small></div>

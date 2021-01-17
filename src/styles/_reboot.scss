@@ -28,6 +28,7 @@ html {
   -ms-text-size-adjust: 100%; /* 4 */
   -ms-overflow-style: scrollbar; /* 5 */
   -webkit-tap-highlight-color: transparent; /* 6 */
+  overflow-x: hidden;
 }
 /* IE10+ doesn't honor `<meta name="viewport">` in some cases. */
 @-ms-viewport {
@@ -53,6 +54,7 @@ body {
   color: #212529;
   text-align: left; /* 3 */
   background-color: #fff; /* 2 */
+  overflow-x: hidden;
 }
 /*
 Suppress the focus outline on elements that cannot be accessed via keyboard.

@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { UnitsComponent } from './pages/units/units.component';
 const routes: Routes = [
    {path: '', component: HomeComponent},
    {path: 'convert-currency',
@@ -23,7 +24,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    UnitsComponent
   ],
   imports: [
     BrowserModule,

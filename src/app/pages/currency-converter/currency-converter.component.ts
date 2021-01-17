@@ -63,13 +63,6 @@ export class CurrencyConverterComponent implements OnInit {
      this.result = this.calculateExchangeRate(this.selectedValueFrom.rate, this.selectedValueTo.rate);
   }
 
-  swapCurrency(): void {
-     const fromValues = this.selectedValueFrom;
-     const toValues = this.selectedValueTo;
-     this.currencyConverterForm.controls.rateFrom.setValue(toValues);
-     this.currencyConverterForm.controls.rateTo.setValue(fromValues);
-  }
-
   getTopCurrencies(data): any {
     return data.filter((res: Currency) => {
        return res.currencyCode.includes(DefaultCurrecnies[res.currencyCode]);
