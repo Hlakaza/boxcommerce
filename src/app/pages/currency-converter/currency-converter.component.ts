@@ -18,11 +18,13 @@ export class CurrencyConverterComponent implements OnInit {
   selectedValueTo: Currency;
   amount = 0;
   result: any = 0;
+  loading = true;
   constructor(readonly api: ApiService) {
     this.api.getRates().subscribe((res: Rates) => {
       this.updated = res.date;
       this.baseRate = res.rates.USD;
       this.generateRatesArray(res.rates);
+      this.loading = false;
     });
   }
 

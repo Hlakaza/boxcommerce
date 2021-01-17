@@ -1,9 +1,9 @@
 
-<div *ngIf="!rates?.length" class="d-flex flex-col-wrap mt-5 w-100 align-items-center">
+<div *ngIf="loading" class="d-flex flex-col-wrap mt-5 w-100 align-items-center">
   <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
 </div>
 
-<ng-container *ngIf="rates?.length">
+<ng-container *ngIf="rates?.length && !loading">
   <form class="d-flex flex-col-wrap w-100 align-items-center" [formGroup]="currencyConverterForm">
     <mat-card class="converter-content custom-box mt-1">
       <mat-card-title class="mb-3 mt-1 text-center">
