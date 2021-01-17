@@ -1,3 +1,8 @@
+
+<div *ngIf="!rates?.length" class="d-flex flex-col-wrap mt-5 w-100 align-items-center">
+  <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+</div>
+
 <ng-container *ngIf="rates?.length">
   <form class="d-flex flex-col-wrap w-100 align-items-center" [formGroup]="currencyConverterForm">
     <mat-card class="converter-content custom-box mt-1">
@@ -48,7 +53,7 @@
         </div>
 
         <div class="flex-item-100 mt-1">
-          <div class="text-right"><small>last updated at <b>{{updated | date: 'mediumDate'}}</b></small></div>
+          <div class="text-right"><small>Last updated on <b>{{updated | date: 'mediumDate'}}</b></small></div>
           <mat-card class="mt-1" *ngFor="let rate of getTopCurrencies(rates) | sort: 'rate'">
             <div class="d-flex">
               <img class="option-img" *ngIf="rate?.currencyCode" aria-hidden [src]="'assets/countries/svg/'+getImage(rate.currencyCode)+'.svg'" height="25">
